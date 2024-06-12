@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>HTML Geolocation</h1>
+    <p>Click the button to get your coordinates.</p>
+
+    <button onclick="getLocation()">Try It</button>
+
+    <p id="demo"></p>
+
+    <script>
+      const x = document.getElementById("demo");
+      let latitude;
+      let longitude;
+        let jarak;
+      let latSMK1=4.29850;
+      let longSMK1=98.04016;
+
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+          x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+      }
+
+      function showPosition(position) {
+        //   x.innerHTML = "Latitude: " + position.coords.latitude +
+        //   "<br>Longitude: " + position.coords.longitude;
+        latitude = position.coords.latitude;
+        longitude = position.coords.longitude;
+        hitungjarak(latSMK1,longSMK1,latitude,longitude);
+      }
+      function hitungjarak(lat1,long1,lat2,long2,unit='kilometers'){
+        let theta=long1-long2;
+        let distance=60*1.1515*(180/Math.PI)*Math.acos(
+            Math.sin(lat1*(Math.PI/180))*Math.sin(lat2*(Math.PI/180))+Math.cos(lat1*(Math.PI/180))*Math.cos(lat2*(Math.PI/180))*Math.cos(theta*(Math.PI/180))
+        );
+        if (unit='miles'){
+            jarak=Math.round(distance,2);
+            
+        }else{
+            jarak=Math.round(distance*1.609344,2)
+        }
+        x.innerHTML =jarak+" kilo";
+      }
+    </script>
+  </body>
+</html>
