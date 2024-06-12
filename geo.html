@@ -4,7 +4,7 @@
     <h1>HTML Geolocation</h1>
     <p>Click the button to get your coordinates.</p>
 
-    <button onclick="getLocation()">Try It</button>
+    <button onclick="getLocation()">Jarak dari sekolah</button>
 
     <p id="demo"></p>
 
@@ -37,12 +37,12 @@
             Math.sin(lat1*(Math.PI/180))*Math.sin(lat2*(Math.PI/180))+Math.cos(lat1*(Math.PI/180))*Math.cos(lat2*(Math.PI/180))*Math.cos(theta*(Math.PI/180))
         );
         if (unit=='miles'){
-            jarak=Math.round(distance,2);
+            jarak=Math.round(distance);
             
         }else if(unit=='kilometers'){
-            jarak=Math.round(distance*1.609344,2)
+            jarak=distance*1.609344;
         }
-        x.innerHTML =jarak+" "+unit;
+        x.innerHTML =jarak*1000+" meter"
       }
     </script>
   </body>
