@@ -39,7 +39,7 @@
         if (unit='miles'){
             jarak=Math.round(distance,2);
             
-        }else{
+        }else if(unit='kilometers'){
             jarak=Math.round(distance*1.609344,2)
         }
         x.innerHTML =jarak+" kilo";
